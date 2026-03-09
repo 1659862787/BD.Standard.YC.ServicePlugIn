@@ -93,6 +93,7 @@
     <Compile Include="ProjectInitiation\AuditOperationPlugIn.cs" />
     <Compile Include="ProjectInitiationX\ProduceXBillPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requisition\PurRequisitionBillPlugin.cs" />
     <Compile Include="Requisition\SaveOperationPlugIn.cs" />
   </ItemGroup>
   <ItemGroup>
