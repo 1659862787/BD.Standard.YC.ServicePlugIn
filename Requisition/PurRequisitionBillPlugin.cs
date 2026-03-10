@@ -80,36 +80,18 @@ namespace BD.Standard.YC.ServicePlugIn.Requisition
                                     View.Model.SetValue(F_BUDGET, subAmount);
                                     this.View.InvokeFormOperation("Save");
 
-                                }
-                            });
-                        }
-                    }
-                    else
-                    {
-                        this.View.ShowErrMessage("项目编码无法查询到对应的项目立项单！");
-                        e.Cancel = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+                                    }
+                                });
 
-        /// <summary>
-        /// 获取项目立项单的原材料预算金额
-        /// </summary>
-        /// <returns>项目立项单对象</returns>
-        private DynamicObject[] GetFmaterial()
-        {
-            DynamicObject dynamicObject = (DynamicObject)this.View.Model.GetValue("F_ProjectInitiation");
-            if (dynamicObject != null)
-            {
-                string F_ProjectInitiation = dynamicObject["Number"].ToString();
-                
-                List<SelectorItemInfo> lstSelectorItemInfos = new List<SelectorItemInfo>();
-                lstSelectorItemInfos.Add(new SelectorItemInfo("F_material"));
+                            }
+                        }
+                        else
+                        {
+                            //throw new KDException("查询项目立项单失败", "无法查询到对应的项目立项单！");
+                            this.View.ShowErrMessage("项目编码无法查询到对应的项目立项单！");
+                            e.Cancel = true;    
+                        }
+
 
                 DynamicObject[] UJED_ProjectInitiation = BusinessDataServiceHelper.Load(Context, "UJED_projectInitiation", lstSelectorItemInfos, OQLFilter.CreateHeadEntityFilter("Fbillno = '" + F_ProjectInitiation + "'"));
                 return UJED_ProjectInitiation;
