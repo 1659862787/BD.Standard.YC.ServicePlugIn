@@ -1,9 +1,7 @@
-﻿using Kingdee.BOS;
-using Kingdee.BOS.App.Data;
+﻿
 using Kingdee.BOS.Core.DynamicForm.PlugIn;
 using Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
 using Kingdee.BOS.Core.Metadata.EntityElement;
-using Kingdee.BOS.Core.Metadata.FieldElement;
 using Kingdee.BOS.Orm.DataEntity;
 using Kingdee.BOS.Util;
 using System;
