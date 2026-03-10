@@ -13,7 +13,7 @@ using System.ComponentModel;
 namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
 {
     [Kingdee.BOS.Util.HotUpdate]
-    [Description("审核操作服务插件")]
+    [Description("项目立项(变更)单审核操作服务插件")]
     public class AuditOperationPlugIn : AbstractOperationServicePlugIn
     {
         public override void OnPreparePropertys(PreparePropertysEventArgs e)
@@ -38,9 +38,9 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
             try
             {
                 DynamicObject entity = e.DataEntitys[0];
-
+                //根据单据ID获取单据编号
                 var formid = BusinessInfo.GetForm().Id.ToString();
-
+                //根据不同的单据类型获取单据编号，并调用保存预制单据数据的方法
                 if ( StringUtils.EqualsIgnoreCase(formid, "UJED_projectInitiation"))
                 {
                     string fbillno = entity["billno"].ToString();
@@ -64,6 +64,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
 
         private void SavePreBaseData(DynamicObject entity, string fbillno)
         {
+            //根据单据编号查询预制单据ID，如果存在则更新，不存在则新增
             string sql = $"select fid from T_BAS_PREBDTWO WHERE FNUMBER='{fbillno}'";
             long fid = DBUtils.ExecuteScalar<long>(this.Context, sql, 0, null);
             JObject id = new JObject()

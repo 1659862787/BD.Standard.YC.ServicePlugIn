@@ -94,7 +94,7 @@
     <Compile Include="ProjectInitiationX\ProduceXBillPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requisition\PurRequisitionBillPlugin.cs" />
-    <Compile Include="Requisition\SaveOperationPlugIn.cs" />
+    <Compile Include="Requisition\OperationPlugIn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config.md" />
