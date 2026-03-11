@@ -88,6 +88,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OtherStockOut\OtherStockOutBillPlugin.cs" />
+    <Compile Include="Payment\OperationPlugIn.cs" />
     <Compile Include="ProjectInitiationX\AduitOperationPlugIn.cs" />
     <Compile Include="ProjectInitiation\ProduceBillPlugin.cs" />
     <Compile Include="ProjectInitiation\AuditOperationPlugIn.cs" />
@@ -98,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="config.md" />
+    <None Include="OtherStockOut\README.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
