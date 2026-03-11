@@ -1,13 +1,10 @@
-﻿using Kingdee.BOS;
-using Kingdee.BOS.Core.DynamicForm;
+﻿using Kingdee.BOS.Core.DynamicForm;
 using Kingdee.BOS.Core.DynamicForm.PlugIn;
 using Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
 using Kingdee.BOS.Core.Metadata;
-using Kingdee.BOS.Core.Metadata.Util;
 using Kingdee.BOS.Orm.DataEntity;
 using Kingdee.BOS.ServiceHelper;
 using Kingdee.BOS.Util;
-using Kingdee.BOS.WebApi.FormService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,7 +104,7 @@ namespace BD.Standard.YC.ServicePlugIn.Requisition
             if (dynamicObject != null)
             {
                 string F_ProjectInitiation = dynamicObject["Number"].ToString();
-
+                //查询项目立项单的原材料预算金额
                 List<SelectorItemInfo> lstSelectorItemInfos = new List<SelectorItemInfo>();
                 lstSelectorItemInfos.Add(new SelectorItemInfo("F_material"));
 

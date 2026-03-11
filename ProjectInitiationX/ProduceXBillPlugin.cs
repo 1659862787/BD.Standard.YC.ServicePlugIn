@@ -25,7 +25,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiationX
             {
                 for (int row = 0; row < dy.Count; row++)
                 {
-                    
+
                     if (dy[row]["F_ChangeType"].ToString().Equals("A"))
                     {
                         this.View.GetFieldEditor("F_ChangeType", row).Enabled = false;
@@ -48,11 +48,11 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiationX
             string v = View.Model.GetValue("F_newVersion").ToString();
             int F_newVersion = Convert.ToInt32(this.View.Model.GetValue("F_newVersion").ToString());
             string billno = this.View.Model.GetValue("FBILLNO").ToString();
-                int i = F_newVersion;
+            int i = F_newVersion;
             if ((++F_newVersion).ToString().Length == 1)
             {
                 this.Model.DataObject["BillNo"] = billno + "_V00" + ++i;
-                this.Model.DataObject["F_newVersion"] ="00" + i;
+                this.Model.DataObject["F_newVersion"] = "00" + i;
             }
             if ((++F_newVersion).ToString().Length == 2)
             {
@@ -89,7 +89,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiationX
             {
                 string F_ChangeType = e.NewValue.ToString();
                 string F_ChangeTypeOld = e.OldValue.ToString();
-                if (F_ChangeType.Equals("A")&& !F_ChangeTypeOld.Equals("A") && !string.IsNullOrWhiteSpace(this.View.Model.GetValue("F_srcentryid", e.Row)!=null? this.View.Model.GetValue("F_srcentryid", e.Row).ToString():""))
+                if (F_ChangeType.Equals("A") && !F_ChangeTypeOld.Equals("A") && !string.IsNullOrWhiteSpace(this.View.Model.GetValue("F_srcentryid", e.Row) != null ? this.View.Model.GetValue("F_srcentryid", e.Row).ToString() : ""))
                 {
                     DynamicObjectCollection dyc = this.Model.DataObject["FEntity"] as DynamicObjectCollection;
                     foreach (var item in dyc)
@@ -101,13 +101,13 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiationX
                     }
                     this.View.UpdateView("F_ChangeType");
                     this.View.ShowErrMessage("源单明细数据，不允许新增！");
-                   
+
                 }
 
 
 
             }
-           
+
 
         }
 
@@ -127,7 +127,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiationX
                 {
                     this.View.ShowErrMessage("源单明细已有下游单据，禁止删除分录行！");
                     e.Cancel = true;
-                   
+
                 }
             }
         }

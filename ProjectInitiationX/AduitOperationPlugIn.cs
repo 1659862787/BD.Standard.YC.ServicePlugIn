@@ -67,7 +67,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiationX
                     Expobj["F_newVersion"] = entity["F_newVersion"].ToString();
                     Expobj["F_ChangeReason"] = entity["F_ChangeReason"].ToString();
 
-                    
+
                     #endregion 表头实体赋值
 
                     DynamicObjectCollection dyc = entity["FEntity"] as DynamicObjectCollection;

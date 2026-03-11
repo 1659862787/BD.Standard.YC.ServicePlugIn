@@ -43,7 +43,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
                     this.View.ShowForm(bill);
                 }
             }
-            
+
         }
 
         public static class HighVersionBomDatas

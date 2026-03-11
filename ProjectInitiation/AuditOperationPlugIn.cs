@@ -41,7 +41,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
                 //根据单据ID获取单据编号
                 var formid = BusinessInfo.GetForm().Id.ToString();
                 //根据不同的单据类型获取单据编号，并调用保存预制单据数据的方法
-                if ( StringUtils.EqualsIgnoreCase(formid, "UJED_projectInitiation"))
+                if (StringUtils.EqualsIgnoreCase(formid, "UJED_projectInitiation"))
                 {
                     string fbillno = entity["billno"].ToString();
                     SavePreBaseData(entity, fbillno);
@@ -50,7 +50,7 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
                 if (StringUtils.EqualsIgnoreCase(formid, "UJED_projectInitiationChange"))
                 {
                     string fbillno = entity["billno"].ToString();
-                    fbillno= fbillno.Substring(0, fbillno.LastIndexOf("_"));
+                    fbillno = fbillno.Substring(0, fbillno.LastIndexOf("_"));
                     SavePreBaseData(entity, fbillno);
 
                 }

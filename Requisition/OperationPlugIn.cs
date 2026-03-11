@@ -1,10 +1,7 @@
 ﻿using Kingdee.BOS.App.Data;
-using Kingdee.BOS.Core.DynamicForm;
 using Kingdee.BOS.Core.DynamicForm.PlugIn;
 using Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
-using Kingdee.BOS.Core.Metadata;
 using Kingdee.BOS.Orm.DataEntity;
-using Kingdee.BOS.ServiceHelper;
 using Kingdee.BOS.Util;
 using System;
 using System.Collections.Generic;
