@@ -1,4 +1,5 @@
 ﻿using Kingdee.BOS;
+using Kingdee.BOS.App.Data;
 using Kingdee.BOS.Core.Bill;
 using Kingdee.BOS.Core.DynamicForm;
 using Kingdee.BOS.Core.DynamicForm.PlugIn;
@@ -44,6 +45,9 @@ namespace BD.Standard.YC.ServicePlugIn.ProjectInitiation
                 }
             }
 
+           
+
+            
         }
 
         public static class HighVersionBomDatas
