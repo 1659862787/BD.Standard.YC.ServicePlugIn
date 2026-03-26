@@ -44,7 +44,7 @@ namespace BD.Standard.YC.ServicePlugIn.Requisition
             try
             {
                 //当保存操作时，进行金额校验，如果超出预算则提示用户是否继续保存，并录入额外申请预算的金额
-                if (e.Operation.FormOperation.Operation.EqualsIgnoreCase("Save"))
+                if (e.Operation.FormOperation.Operation.EqualsIgnoreCase("Submit"))
                 {
                     decimal totalAmount = 0;
                     foreach (var item in this.View.Model.GetEntityDataObject(this.Model.BusinessInfo.GetEntity("FEntity")))
@@ -76,9 +76,11 @@ namespace BD.Standard.YC.ServicePlugIn.Requisition
                                     this.View.GetControl(F_BUDGET).SetCustomPropertyValue("MustInput", true);
                                     View.Model.SetValue(F_BUDGET, subAmount);
                                     this.View.InvokeFormOperation("Save");
+                                    this.View.InvokeFormOperation("Submit");
 
                                 }
                             });
+                            this.View.InvokeFormOperation("Save");
                         }
                     }
                     else
@@ -124,31 +126,31 @@ namespace BD.Standard.YC.ServicePlugIn.Requisition
 
 
                 //当修改单据头的项目立项编码时，重新获取原材料预算金额，并进行金额校验
-                if (e.Field.FieldName.EqualsIgnoreCase(F_BUDGET))
-                {
-                    decimal newF_BUDGET = Convert.ToDecimal(e.NewValue.ToString());
-                    decimal oldF_BUDGET = Convert.ToDecimal(e.OldValue.ToString());
+                //if (e.Field.FieldName.EqualsIgnoreCase(F_BUDGET))
+                //{
+                //    decimal newF_BUDGET = Convert.ToDecimal(e.NewValue.ToString());
+                //    decimal oldF_BUDGET = Convert.ToDecimal(e.OldValue.ToString());
 
-                    decimal totalAmount = 0;
-                    decimal subAmount = 0;
-                    foreach (var item in this.View.Model.GetEntityDataObject(this.Model.BusinessInfo.GetEntity("FEntity")))
-                    {
-                        totalAmount += Convert.ToDecimal(item["Amount"]);
-                    }
-                    DynamicObject[] UJED_ProjectInitiation = GetFmaterial();
-                    if (UJED_ProjectInitiation.Count() > 0)
-                    {
-                        subAmount = decimal.Subtract(totalAmount, Convert.ToDecimal(UJED_ProjectInitiation[0]["F_material"]));
-                    }
+                //    decimal totalAmount = 0;
+                //    decimal subAmount = 0;
+                //    foreach (var item in this.View.Model.GetEntityDataObject(this.Model.BusinessInfo.GetEntity("FEntity")))
+                //    {
+                //        totalAmount += Convert.ToDecimal(item["Amount"]);
+                //    }
+                //    DynamicObject[] UJED_ProjectInitiation = GetFmaterial();
+                //    if (UJED_ProjectInitiation.Count() > 0)
+                //    {
+                //        subAmount = decimal.Subtract(totalAmount, Convert.ToDecimal(UJED_ProjectInitiation[0]["F_material"]));
+                //    }
 
-                    if (oldF_BUDGET > 0 && decimal.Subtract(newF_BUDGET, subAmount) < 0)
-                    {
-                        DynamicObject dataObject = this.View.Model.DataObject;
-                        dataObject[F_BUDGET] = oldF_BUDGET;
-                        this.View.ShowErrMessage($"额外申请预算的金额能小于超出额度！目前单据金额超出:{subAmount}!请重新录入额外申请预算！");
-                        View.UpdateView(F_BUDGET);
-                    }
-                }
+                //    if (oldF_BUDGET > 0 && decimal.Subtract(newF_BUDGET, subAmount) < 0)
+                //    {
+                //        DynamicObject dataObject = this.View.Model.DataObject;
+                //        dataObject[F_BUDGET] = oldF_BUDGET;
+                //        this.View.ShowErrMessage($"额外申请预算的金额能小于超出额度！目前单据金额超出:{subAmount}!请重新录入额外申请预算！");
+                //        View.UpdateView(F_BUDGET);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
